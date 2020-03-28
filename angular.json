@@ -117,10 +117,35 @@
           }
         },
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@briebug/cypress-schematic:cypress",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "corona-stats:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "corona-stats:serve:production"
+            }
+          }
+        },
+        "cypress-run": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
             "devServerTarget": "corona-stats:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "corona-stats:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "corona-stats:serve",
+            "watch": true,
+            "headless": false
           },
           "configurations": {
             "production": {
@@ -129,6 +154,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "corona-stats"
 }
