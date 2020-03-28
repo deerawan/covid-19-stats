@@ -1,0 +1,16 @@
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.stat-item {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.last-updated {
+  font-weight: bold;
+}
