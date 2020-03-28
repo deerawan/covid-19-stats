@@ -1,0 +1,10 @@
+{
+  "name": "Covid-19 Stats",
+  "version": "1.0",
+  "description": "Get information on Covid-19",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["activeTab", "webNavigation", "storage"]
+}
