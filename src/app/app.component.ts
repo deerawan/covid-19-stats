@@ -30,6 +30,14 @@ export class AppComponent implements OnInit {
     );
   }
 
+  setLightMode() {
+    document.body.classList.remove('theme-dark');
+  }
+
+  setDarkMode() {
+    document.body.classList.add('theme-dark');
+  }
+
   private buildGlobalStats(response: GlobalResponse): Stat[] {
     return [
       {

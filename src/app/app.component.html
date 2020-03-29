@@ -1,6 +1,9 @@
 <section class="header">
   <h1 class="title">Covid-19 Stats</h1>
-  <app-mode-toggle></app-mode-toggle>
+  <app-mode-toggle
+    (lightMode)="setLightMode()"
+    (darkMode)="setDarkMode()"
+  ></app-mode-toggle>
 </section>
 <app-stat-item
   *ngFor="let statItem of globalStats$ | async"

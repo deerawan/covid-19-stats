@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-mode-toggle',
@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mode-toggle.component.scss']
 })
 export class ModeToggleComponent implements OnInit {
+  @Output() darkMode = new EventEmitter();
+  @Output() lightMode = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  setMode(event) {
+    const { checked } = event.target;
+    return checked ? this.darkMode.emit(null) : this.lightMode.emit(null);
+  }
 }

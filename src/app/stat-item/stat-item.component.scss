@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  background: #fff;
-  box-shadow: 2px 4px 10px #E5E5E5;
+  background: var(--bg-secondary);
+  box-shadow: var(--stat-shadow);
+  transition: var(--bg-transition);
   padding: 20px;
 }
 
@@ -11,24 +12,24 @@
   font-size: 18px;
   font-weight: bold;
   margin: 0;
-  color: #617691;
+  color: var(--text-primary);
 }
 
 .number {
   margin-top: 10px;
   font-size: 45px;
   font-weight: bold;
-  margin: .2em 0;
+  margin: 0.2em 0;
 }
 
 .warning {
-  color: #F4CA64;
+  color: var(--state-warning);
 }
 
 .success {
-  color: #74D99F;
+  color: var(--state-success);
 }
 
 .danger {
-  color: #D95C02;
+  color: var(--state-danger);
 }

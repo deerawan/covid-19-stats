@@ -5,8 +5,8 @@
   position: relative;
   padding: 5px;
 
-  background: #fff;
-  transition: background 0.3s linear;
+  background: var(--pure-white);
+  transition: var(--bg-transition);
   height: 28px;
   width: 50px;
   border-radius: 50px;
@@ -38,5 +38,5 @@
 }
 
 .checkbox:checked + .label {
-  background: #283142;
+  background: var(--dark-grey);
 }
