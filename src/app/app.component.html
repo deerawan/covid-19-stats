@@ -5,14 +5,22 @@
     (darkMode)="setDarkMode()"
   ></app-mode-toggle>
 </section>
-<app-stat-item
-  *ngFor="let statItem of globalStats$ | async"
-  [title]="statItem.title"
-  [total]="statItem.total | number"
-  [color]="statItem.color"
-  class="stat-item"
-></app-stat-item>
-<p>
-  <span class="last-updated">🕒 Last updated:</span>
-  {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }}
-</p>
+<ng-container *ngIf="globalStats$ | async as globalStats; else shimmer">
+  <app-stat-item
+    *ngFor="let statItem of globalStats$ | async"
+    [title]="statItem.title"
+    [total]="statItem.total | number"
+    [color]="statItem.color"
+    class="stat-item"
+  ></app-stat-item>
+  <p>
+    <span class="last-updated">🕒 Last updated:</span>
+    {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }}
+  </p>
+</ng-container>
+
+<ng-template #shimmer>
+  <div class="shimmer stat-shimmer"></div>
+  <div class="shimmer stat-shimmer"></div>
+  <div class="shimmer stat-shimmer"></div>
+</ng-template>

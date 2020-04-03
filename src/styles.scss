@@ -4,7 +4,7 @@
 
 :root {
   --pure-white: #fff;
-  --dark-grey: 283142;
+  --dark-grey: #283142;
   --bg-primary: #f5f7fa;
   --text-primary: #617691;
   --bg-secondary: var(--pure-white);
@@ -23,7 +23,7 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   color: var(--text-primary);
   transition: var(--bg-transition);
-  min-width: 375px;
+  min-width: 355px;
   min-height: 500px;
 }
 
@@ -32,4 +32,32 @@ body.theme-dark {
   --bg-secondary: var(--dark-grey);
   --text-primary: #859aaf;
   --stat-shadow: none;
+}
+
+.shimmer {
+  display: inline-block;
+  width: 100%;
+  background-color: #f6f7f8;
+  background-image:
+    linear-gradient(
+      to right,
+      #f6f7f8 0,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%
+    );
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 1000px 1000px;
+  animation: shimmerEffect 1s linear infinite forwards;
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
 }
