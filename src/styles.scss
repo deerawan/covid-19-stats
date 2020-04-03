@@ -4,17 +4,14 @@
 
 :root {
   --pure-white: #fff;
-  --dark-grey: #283142;
-
+  --dark-grey: 283142;
   --bg-primary: #f5f7fa;
   --text-primary: #617691;
   --bg-secondary: var(--pure-white);
   --stat-shadow: 2px 4px 10px #e5e5e5;
-
   --state-warning: #f4ca64;
   --state-success: #74d99f;
   --state-danger: #d95c02;
-
   --bg-transition: background 0.1s linear;
 }
 
@@ -25,7 +22,6 @@ body {
   padding: 10px;
   font-family: 'Nunito Sans', sans-serif;
   color: var(--text-primary);
-
   transition: var(--bg-transition);
   min-width: 375px;
   min-height: 500px;
