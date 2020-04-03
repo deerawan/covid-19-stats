@@ -51,6 +51,7 @@
     "jest": "25.2.3",
     "jest-preset-angular": "8.1.2",
     "lint-staged": "10.0.9",
+    "ng-lint-staged": "^0.1.6",
     "prettier": "2.0.2",
     "stylelint": "^13.2.1",
     "stylelint-config-standard": "^20.0.0",
@@ -97,7 +98,12 @@
     }
   },
   "lint-staged": {
-    "*.scss": ["stylelint --fix"],
+    "*.scss": [
+      "stylelint --fix"
+    ],
+    "*.ts": [
+      "ng-lint-staged lint --fix --"
+    ],
     "*.{js,json,css,scss,less,md,ts,html,component.html}": [
       "prettier --write",
       "git add"
