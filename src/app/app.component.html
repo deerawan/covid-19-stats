@@ -19,9 +19,9 @@
   </ng-select>
 </section>
 
-<ng-container *ngIf="globalStats$ | async as globalStats; else shimmer">
+<ng-container *ngIf="stats$ | async as stats; else shimmer">
   <app-stat-item
-    *ngFor="let statItem of globalStats$ | async"
+    *ngFor="let statItem of stats"
     [title]="statItem.title"
     [total]="statItem.total | number"
     [color]="statItem.color"

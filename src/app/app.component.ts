@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CoronaService } from './corona.service';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Observable, Subject, of } from 'rxjs';
+import { map, shareReplay, tap } from 'rxjs/operators';
 import { Stat } from './corona.model';
 import { GlobalStat, CountryStat } from './api.model';
 
@@ -12,9 +12,9 @@ import { GlobalStat, CountryStat } from './api.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  globalStats$: Observable<Stat[]>;
   lastUpdated$: Observable<number>;
   countryNames$: Observable<CountryStat[]>;
+  stats$: Observable<Stat[]>;
 
   private globalApiResponse$: Observable<GlobalStat>;
 
@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
       .getGlobalStat()
       .pipe(shareReplay(1));
 
-    this.globalStats$ = this.globalApiResponse$.pipe(
-      map((response: GlobalStat) => this.buildGlobalStats(response))
+    this.stats$ = this.globalApiResponse$.pipe(
+      map((response: GlobalStat) => this.buildStat(response))
     );
 
     this.countryNames$ = this.coronaService.getCountriesStat();
@@ -44,11 +44,15 @@ export class AppComponent implements OnInit {
     document.body.classList.add('theme-dark');
   }
 
-  onCountryChange(event) {
-    console.log(event);
+  onCountryChange(event: CountryStat) {
+    this.stats$ = of(this.buildStat(event));
   }
 
-  private buildGlobalStats(response: GlobalStat): Stat[] {
+  private buildStat(response: {
+    active: number;
+    recovered: number;
+    deaths: number;
+  }): Stat[] {
     return [
       {
         title: 'Confirmed',
