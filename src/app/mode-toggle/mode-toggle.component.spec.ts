@@ -21,4 +21,11 @@ describe('ModeToggleComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain elements', () => {
+    const element = fixture.debugElement.nativeElement;
+    expect(element.querySelector('.checkbox')).toBeTruthy();
+    expect(element.querySelector('.label')).toBeTruthy();
+    expect(element.querySelector('.icon')).toBeTruthy();
+  });
 });
