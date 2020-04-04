@@ -5,14 +5,17 @@
 :root {
   --pure-white: #fff;
   --dark-grey: #283142;
+  --lynch: #617691;
   --bg-primary: #f5f7fa;
-  --text-primary: #617691;
   --bg-secondary: var(--pure-white);
-  --stat-shadow: 2px 4px 10px #e5e5e5;
+  --text-primary: var(--lynch);
+  --form-control: var(--lynch);
+  --shadow: 2px 4px 10px #e5e5e5;
   --state-warning: #f4ca64;
   --state-success: #74d99f;
   --state-danger: #d95c02;
   --bg-transition: background 0.1s linear;
+  --border-radius: 5px;
 }
 
 body {
@@ -31,33 +34,8 @@ body.theme-dark {
   --bg-primary: #1c2632;
   --bg-secondary: var(--dark-grey);
   --text-primary: #859aaf;
-  --stat-shadow: none;
+  --shadow: 2px 4px 10px #17202c;
 }
 
-.shimmer {
-  display: inline-block;
-  width: 100%;
-  background-color: #f6f7f8;
-  background-image:
-    linear-gradient(
-      to right,
-      #f6f7f8 0,
-      #edeef1 20%,
-      #f6f7f8 40%,
-      #f6f7f8 100%
-    );
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: 1000px 1000px;
-  animation: shimmerEffect 1s linear infinite forwards;
-}
-
-@keyframes shimmerEffect {
-  0% {
-    background-position: -1000px 0;
-  }
-
-  100% {
-    background-position: 1000px 0;
-  }
-}
+@import './select';
+@import './shimmer';

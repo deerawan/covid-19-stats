@@ -5,6 +5,20 @@
     (darkMode)="setDarkMode()"
   ></app-mode-toggle>
 </section>
+
+<section class="country-select">
+  <label for="country">Select country</label>
+  <ng-select
+    [items]="countryNames$ | async"
+    id="country"
+    bindLabel="country"
+    autofocus
+    bindValue="country"
+    (change)="onCountryChange($event)"
+  >
+  </ng-select>
+</section>
+
 <ng-container *ngIf="globalStats$ | async as globalStats; else shimmer">
   <app-stat-item
     *ngFor="let statItem of globalStats$ | async"

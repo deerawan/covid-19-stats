@@ -6,6 +6,7 @@
   padding: 5px;
   background: var(--pure-white);
   transition: var(--bg-transition);
+  box-shadow: var(--shadow);
   height: 28px;
   width: 50px;
   border-radius: 50px;
@@ -21,7 +22,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  background: #617691;
+  background: var(--form-control);
   border-radius: 50%;
   transform: translate(0);
   transition: transform 0.3s linear;

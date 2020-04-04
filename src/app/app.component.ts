@@ -3,7 +3,7 @@ import { CoronaService } from './corona.service';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Stat } from './corona.model';
-import { GlobalResponse } from './api.model';
+import { GlobalResponse, CountriesResponse } from './api.model';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ import { GlobalResponse } from './api.model';
 export class AppComponent implements OnInit {
   globalStats$: Observable<Stat[]>;
   lastUpdated$: Observable<number>;
+  countryNames$: Observable<CountriesResponse[]>;
 
   private globalApiResponse$: Observable<GlobalResponse>;
 
@@ -25,6 +26,8 @@ export class AppComponent implements OnInit {
       map((response: GlobalResponse) => this.buildGlobalStats(response))
     );
 
+    this.countryNames$ = this.coronaService.getCountries();
+
     this.lastUpdated$ = this.globalApiResponse$.pipe(
       map(response => response.updated)
     );
@@ -36,6 +39,10 @@ export class AppComponent implements OnInit {
 
   setDarkMode() {
     document.body.classList.add('theme-dark');
+  }
+
+  onCountryChange(event) {
+    console.log(event);
   }
 
   private buildGlobalStats(response: GlobalResponse): Stat[] {
