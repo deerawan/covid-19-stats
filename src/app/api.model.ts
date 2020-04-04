@@ -1,4 +1,4 @@
-export interface GlobalResponse {
+export interface GlobalStat {
   cases: number;
   deaths: number;
   recovered: number;
@@ -6,10 +6,10 @@ export interface GlobalResponse {
   active: number;
 }
 
-export interface CountriesResponse {
+export interface CountryStat {
   country: string;
   countryInfo: {
-    _id: string;
+    _id: number;
     iso2: string;
     iso3: string;
     lat: number;
@@ -17,9 +17,9 @@ export interface CountriesResponse {
     flag: string;
   };
   cases: number;
-  todayCases: 565;
-  deaths: 6098;
-  todayDeaths: 28;
+  todayCases: number;
+  deaths: number;
+  todayDeaths: number;
   recovered: number;
   active: number;
   critical: number;

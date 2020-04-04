@@ -3,7 +3,7 @@ import { CoronaService } from './corona.service';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Stat } from './corona.model';
-import { GlobalResponse, CountriesResponse } from './api.model';
+import { GlobalStat, CountryStat } from './api.model';
 
 @Component({
   selector: 'app-root',
@@ -13,20 +13,22 @@ import { GlobalResponse, CountriesResponse } from './api.model';
 export class AppComponent implements OnInit {
   globalStats$: Observable<Stat[]>;
   lastUpdated$: Observable<number>;
-  countryNames$: Observable<CountriesResponse[]>;
+  countryNames$: Observable<CountryStat[]>;
 
-  private globalApiResponse$: Observable<GlobalResponse>;
+  private globalApiResponse$: Observable<GlobalStat>;
 
   constructor(private coronaService: CoronaService) {}
 
   ngOnInit(): void {
-    this.globalApiResponse$ = this.coronaService.getAll().pipe(shareReplay(1));
+    this.globalApiResponse$ = this.coronaService
+      .getGlobalStat()
+      .pipe(shareReplay(1));
 
     this.globalStats$ = this.globalApiResponse$.pipe(
-      map((response: GlobalResponse) => this.buildGlobalStats(response))
+      map((response: GlobalStat) => this.buildGlobalStats(response))
     );
 
-    this.countryNames$ = this.coronaService.getCountries();
+    this.countryNames$ = this.coronaService.getCountriesStat();
 
     this.lastUpdated$ = this.globalApiResponse$.pipe(
       map(response => response.updated)
@@ -45,7 +47,7 @@ export class AppComponent implements OnInit {
     console.log(event);
   }
 
-  private buildGlobalStats(response: GlobalResponse): Stat[] {
+  private buildGlobalStats(response: GlobalStat): Stat[] {
     return [
       {
         title: 'Confirmed',
