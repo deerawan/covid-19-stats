@@ -1,6 +1,7 @@
 <section class="header">
   <h1 class="title">Covid-19 Stats</h1>
   <app-mode-toggle
+    [mode]="mode"
     (lightMode)="setLightMode()"
     (darkMode)="setDarkMode()"
   ></app-mode-toggle>

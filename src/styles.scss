@@ -6,16 +6,23 @@
   --pure-white: #fff;
   --dark-grey: #283142;
   --lynch: #617691;
-  --bg-primary: #f5f7fa;
+  --athens-gray: #f5f7fa;
+  --mercury: #e5e5e5;
+  --mirage: #17202c;
+  --bamboo: #d95c02;
+  --bg-primary: var(--athens-gray);
   --bg-secondary: var(--pure-white);
   --text-primary: var(--lynch);
   --form-control: var(--lynch);
-  --shadow: 2px 4px 10px #e5e5e5;
+  --shadow: 2px 4px 10px var(--mercury);
   --state-warning: #f4ca64;
   --state-success: #74d99f;
-  --state-danger: #d95c02;
+  --state-danger: var(--bamboo);
   --bg-transition: background 0.1s linear;
   --border-radius: 5px;
+  --shimmer-start: var(--bg-primary);
+  --shimmer-middle: var(--bg-secondary);
+  --shimmer-end: var(--bg-secondary);
 }
 
 body {
@@ -24,10 +31,11 @@ body {
   background: var(--bg-primary);
   padding: 10px;
   font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
   color: var(--text-primary);
   transition: var(--bg-transition);
   min-width: 355px;
-  min-height: 500px;
+  height: 500px;
 }
 
 body.theme-dark {
@@ -35,6 +43,9 @@ body.theme-dark {
   --bg-secondary: var(--dark-grey);
   --text-primary: #859aaf;
   --shadow: 2px 4px 10px #17202c;
+  --shimmer-start: var(--bg-primary);
+  --shimmer-middle: var(--bg-secondary);
+  --shimmer-end: var(--bg-secondary);
 }
 
 @import './select';

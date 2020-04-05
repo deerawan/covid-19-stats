@@ -5,3 +5,5 @@ export interface Stat {
 }
 
 export type StatType = 'success' | 'warning' | 'danger';
+
+export type Theme = 'light' | 'dark';

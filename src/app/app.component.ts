@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CoronaService } from './corona.service';
 import { Observable, Subject, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
-import { Stat } from './corona.model';
+import { Stat, Theme } from './corona.model';
 import { GlobalStat, CountryStat } from './api.model';
 
 @Component({
@@ -15,12 +15,22 @@ export class AppComponent implements OnInit {
   lastUpdated$: Observable<number>;
   countryNames$: Observable<CountryStat[]>;
   stats$: Observable<Stat[]>;
+  mode: Theme;
 
   private globalApiResponse$: Observable<GlobalStat>;
 
   constructor(private coronaService: CoronaService) {}
 
   ngOnInit(): void {
+    if (chrome && chrome.storage) {
+      chrome.storage.sync.get('theme', ({ theme }) => {
+        if (theme === 'dark') {
+          this.mode = 'dark';
+          this.setDarkMode();
+        }
+      });
+    }
+
     this.globalApiResponse$ = this.coronaService
       .getGlobalStat()
       .pipe(shareReplay(1));
@@ -37,10 +47,16 @@ export class AppComponent implements OnInit {
   }
 
   setLightMode() {
+    if (chrome && chrome.storage) {
+      chrome.storage.sync.set({ theme: 'light' });
+    }
     document.body.classList.remove('theme-dark');
   }
 
   setDarkMode() {
+    if (chrome && chrome.storage) {
+      chrome.storage.sync.set({ theme: 'dark' });
+    }
     document.body.classList.add('theme-dark');
   }
 

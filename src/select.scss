@@ -84,6 +84,12 @@
   left: 0;
   padding-left: 10px;
   padding-right: 50px;
+  caret-color: var(--text-primary);
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-input > input {
+  color: var(--text-primary);
+  font-size: 16px;
 }
 
 .ng-select.ng-select-multiple
@@ -269,7 +275,7 @@
 }
 
 .ng-select .ng-clear-wrapper:hover .ng-clear {
-  color: #d0021b;
+  color: var(--state-danger);
 }
 
 .ng-select .ng-spinner-zone {
@@ -390,7 +396,7 @@
 }
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-disabled {
-  color: #ccc;
+  color: var(--text-primary);
 }
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-child {

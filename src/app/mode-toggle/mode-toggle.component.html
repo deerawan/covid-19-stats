@@ -1,4 +1,10 @@
-<input type="checkbox" id="mode" class="checkbox" (change)="setMode($event)" />
+<input
+  #mode
+  type="checkbox"
+  id="mode"
+  class="checkbox"
+  (change)="setMode($event)"
+/>
 <label class="label" for="mode">
   <div class="circle"></div>
   <span class="icon">☀️</span>
