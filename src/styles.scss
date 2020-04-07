@@ -15,9 +15,9 @@
   --text-primary: var(--lynch);
   --form-control: var(--lynch);
   --shadow: 2px 4px 10px var(--mercury);
-  --state-warning: #f4ca64;
-  --state-success: #74d99f;
-  --state-danger: var(--bamboo);
+  --state-warning: #a16c0d;
+  --state-success: #40845a;
+  --state-danger: #d14904;
   --bg-transition: background 0.1s linear;
   --border-radius: 5px;
   --shimmer-start: var(--bg-primary);
@@ -42,6 +42,9 @@ body.theme-dark {
   --bg-primary: #1c2632;
   --bg-secondary: var(--dark-grey);
   --text-primary: #859aaf;
+  --state-warning: #f4ca64;
+  --state-success: #74d99f;
+  --state-danger: #f67002;
   --shadow: 2px 4px 10px #17202c;
   --shimmer-start: var(--bg-primary);
   --shimmer-middle: var(--bg-secondary);
