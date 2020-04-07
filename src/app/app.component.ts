@@ -45,10 +45,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       .getGlobalStat()
       .pipe(shareReplay(1));
 
-    this.stats$ = this.globalApiResponse$.pipe(
-      map((response: GlobalStat) => this.buildStat(response))
-    );
-
+    this.stats$ = this.getGlobalStat();
     this.countryNames$ = this.coronaService.getCountriesStat();
 
     this.lastUpdated$ = this.globalApiResponse$.pipe(
@@ -73,7 +70,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onCountryChange(event: CountryStat) {
-    this.stats$ = of(this.buildStat(event));
+    this.stats$ = event ? of(this.buildStat(event)) : this.getGlobalStat();
+  }
+
+  private getGlobalStat() {
+    return this.globalApiResponse$.pipe(
+      map((response: GlobalStat) => this.buildStat(response))
+    );
   }
 
   private buildStat(response: {
