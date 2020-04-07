@@ -1,7 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  ChangeDetectorRef,
+  NgZone
+} from '@angular/core';
 import { CoronaService } from './corona.service';
 import { Observable, Subject, of } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { Stat, Theme } from './corona.model';
 import { GlobalStat, CountryStat } from './api.model';
 
@@ -11,7 +18,7 @@ import { GlobalStat, CountryStat } from './api.model';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   lastUpdated$: Observable<number>;
   countryNames$: Observable<CountryStat[]>;
   stats$: Observable<Stat[]>;
@@ -19,13 +26,16 @@ export class AppComponent implements OnInit {
 
   private globalApiResponse$: Observable<GlobalStat>;
 
+  private storageTheme = new Subject<Theme>();
+  storageTheme$ = this.storageTheme.asObservable();
+
   constructor(private coronaService: CoronaService) {}
 
   ngOnInit(): void {
     if (chrome && chrome.storage) {
       chrome.storage.sync.get('theme', ({ theme }) => {
+        this.storageTheme.next(theme);
         if (theme === 'dark') {
-          this.mode = 'dark';
           this.setDarkMode();
         }
       });
@@ -45,6 +55,8 @@ export class AppComponent implements OnInit {
       map(response => response.updated)
     );
   }
+
+  ngAfterViewInit() {}
 
   setLightMode() {
     if (chrome && chrome.storage) {
