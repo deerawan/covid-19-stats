@@ -1,6 +1,8 @@
 export interface GlobalStat {
   cases: number;
+  todayCases: number;
   deaths: number;
+  todayDeaths: number;
   recovered: number;
   updated: number;
   active: number;

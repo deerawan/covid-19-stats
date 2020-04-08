@@ -1,5 +1,5 @@
 <section class="header">
-  <h1 class="title">Covid-19 Stats</h1>
+  <h1 class="header__title">Covid-19 Stats</h1>
   <app-mode-toggle
     [mode]="storageTheme$ | async"
     (lightMode)="setLightMode()"
@@ -29,9 +29,12 @@
     class="stat-item"
   ></app-stat-item>
   <p>
-    <span class="last-updated">🕒 Last updated:</span>
-    {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }}
+    <span class="remark">Last updated:</span>
+    {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }},
+    <span class="remark">Source:</span>
+    worldometers.info
   </p>
+  <p></p>
 </ng-container>
 
 <ng-template #shimmer>

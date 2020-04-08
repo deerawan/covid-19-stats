@@ -4,6 +4,6 @@ export interface Stat {
   color: StatType;
 }
 
-export type StatType = 'success' | 'warning' | 'danger';
+export type StatType = 'success' | 'warning' | 'danger' | 'regular';
 
 export type Theme = 'light' | 'dark';

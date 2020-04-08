@@ -83,22 +83,35 @@ export class AppComponent implements OnInit, AfterViewInit {
     active: number;
     recovered: number;
     deaths: number;
+    cases: number;
+    todayCases: number;
+    todayDeaths: number;
   }): Stat[] {
     return [
       {
-        title: 'Confirmed',
-        total: response.active,
-        color: 'warning'
+        title: 'Total cases',
+        total: response.cases,
+        color: 'regular'
       },
       {
-        title: 'Recovered',
-        total: response.recovered,
-        color: 'success'
+        title: 'New cases',
+        total: response.todayCases,
+        color: 'regular'
       },
       {
-        title: 'Deaths',
+        title: 'Total deaths',
         total: response.deaths,
         color: 'danger'
+      },
+      {
+        title: 'New deaths',
+        total: response.todayDeaths,
+        color: 'danger'
+      },
+      {
+        title: 'Total recovered',
+        total: response.recovered,
+        color: 'success'
       }
     ];
   }
