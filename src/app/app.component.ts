@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   countryNames$: Observable<CountryStat[]>;
   stats$: Observable<Stat[]>;
   mode: Theme;
-  statTitle: StatTitle = { text: '🌏 Global' };
+  statTitle: StatTitle;
 
   private globalApiResponse$: Observable<GlobalStat>;
 
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       .getGlobalStat()
       .pipe(shareReplay(1));
 
+    this.statTitle = this.getGlobalStatTitle();
     this.stats$ = this.getGlobalStat();
     this.countryNames$ = this.coronaService.getCountriesStat();
 
@@ -72,13 +73,19 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onCountryChange(event: CountryStat) {
     this.stats$ = event ? of(this.buildStat(event)) : this.getGlobalStat();
-    this.statTitle = { text: event.country, imgUrl: event.countryInfo.flag };
+    this.statTitle = event
+      ? { text: event.country, imgUrl: event.countryInfo.flag }
+      : this.getGlobalStatTitle();
   }
 
-  private getGlobalStat() {
+  private getGlobalStat(): Observable<Stat[]> {
     return this.globalApiResponse$.pipe(
       map((response: GlobalStat) => this.buildStat(response))
     );
+  }
+
+  private getGlobalStatTitle(): StatTitle {
+    return { text: '🌏 Global' };
   }
 
   private buildStat(response: {
