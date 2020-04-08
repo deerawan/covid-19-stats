@@ -21,6 +21,7 @@
 </section>
 
 <ng-container *ngIf="stats$ | async as stats; else shimmer">
+  <app-stat-title [statTitle]="statTitle"></app-stat-title>
   <app-stat-item
     *ngFor="let statItem of stats"
     [title]="statItem.title"

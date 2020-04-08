@@ -1,0 +1,9 @@
+<h2 class="stat-title">
+  <img
+    *ngIf="statTitle.imgUrl"
+    [src]="statTitle.imgUrl"
+    [alt]="statTitle.text"
+    class="stat-title__img"
+  />
+  <span>{{ statTitle.text }}</span>
+</h2>

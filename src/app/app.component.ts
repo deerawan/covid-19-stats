@@ -9,7 +9,7 @@ import {
 import { CoronaService } from './corona.service';
 import { Observable, Subject, of } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Stat, Theme } from './corona.model';
+import { Stat, Theme, StatTitle } from './corona.model';
 import { GlobalStat, CountryStat } from './api.model';
 
 @Component({
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   countryNames$: Observable<CountryStat[]>;
   stats$: Observable<Stat[]>;
   mode: Theme;
+  statTitle: StatTitle = { text: '🌏 Global' };
 
   private globalApiResponse$: Observable<GlobalStat>;
 
@@ -71,6 +72,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onCountryChange(event: CountryStat) {
     this.stats$ = event ? of(this.buildStat(event)) : this.getGlobalStat();
+    this.statTitle = { text: event.country, imgUrl: event.countryInfo.flag };
   }
 
   private getGlobalStat() {

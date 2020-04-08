@@ -8,9 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModeToggleComponent } from './mode-toggle/mode-toggle.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { StatTitleComponent } from './stat-title/stat-title.component';
 
 @NgModule({
-  declarations: [AppComponent, StatItemComponent, ModeToggleComponent],
+  declarations: [
+    AppComponent,
+    StatItemComponent,
+    ModeToggleComponent,
+    StatTitleComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

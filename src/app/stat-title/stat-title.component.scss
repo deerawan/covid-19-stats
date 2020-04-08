@@ -1,0 +1,12 @@
+.stat-title {
+  display: flex;
+  align-items: center;
+}
+
+.stat-title__img {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
