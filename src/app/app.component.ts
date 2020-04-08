@@ -88,14 +88,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     return { text: '🌏 Global' };
   }
 
-  private buildStat(response: {
-    active: number;
-    recovered: number;
-    deaths: number;
-    cases: number;
-    todayCases: number;
-    todayDeaths: number;
-  }): Stat[] {
+  private buildStat(response: GlobalStat): Stat[] {
     return [
       {
         title: 'Total cases',

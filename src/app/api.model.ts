@@ -4,11 +4,11 @@ export interface GlobalStat {
   deaths: number;
   todayDeaths: number;
   recovered: number;
-  updated: number;
   active: number;
+  updated: number;
 }
 
-export interface CountryStat {
+export interface CountryStat extends GlobalStat {
   country: string;
   countryInfo: {
     _id: number;
@@ -18,14 +18,7 @@ export interface CountryStat {
     long: number;
     flag: string;
   };
-  cases: number;
-  todayCases: number;
-  deaths: number;
-  todayDeaths: number;
-  recovered: number;
-  active: number;
   critical: number;
   casesPerOneMillion: number;
   deathsPerOneMillion: number;
-  updated: number;
 }
