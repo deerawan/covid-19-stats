@@ -2,9 +2,7 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  AfterViewInit,
-  ChangeDetectorRef,
-  NgZone
+  AfterViewInit
 } from '@angular/core';
 import { CoronaService } from './corona.service';
 import { Observable, Subject, of } from 'rxjs';
@@ -111,9 +109,24 @@ export class AppComponent implements OnInit, AfterViewInit {
         color: 'danger'
       },
       {
+        title: 'Critical',
+        total: response.critical,
+        color: 'warning'
+      },
+      {
         title: 'Total recovered',
         total: response.recovered,
         color: 'success'
+      },
+      {
+        title: 'Cases / Million ',
+        total: response.casesPerOneMillion,
+        color: 'neutral'
+      },
+      {
+        title: 'Deaths / Million',
+        total: response.deathsPerOneMillion,
+        color: 'neutral'
       }
     ];
   }

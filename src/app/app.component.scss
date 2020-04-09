@@ -9,17 +9,27 @@
   font-weight: bold;
 }
 
-.stat-shimmer {
-  height: 143px;
+.stats,
+.stats-shimmer {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 1fr 1fr;
 }
 
-.stat-item,
 .stat-shimmer {
-  margin-bottom: 20px;
+  height: 97px;
+}
 
+.stats__item,
+.stat-shimmer {
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+.title-shimmer {
+  height: 32px;
+  margin-bottom: 10px;
 }
 
 .remark {

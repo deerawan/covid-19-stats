@@ -9,6 +9,6 @@ export interface StatTitle {
   imgUrl?: string;
 }
 
-export type StatType = 'success' | 'warning' | 'danger' | 'regular';
+export type StatType = 'success' | 'warning' | 'danger' | 'regular' | 'neutral';
 
 export type Theme = 'light' | 'dark';

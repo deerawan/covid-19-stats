@@ -19,6 +19,7 @@
   --state-success: #40845a;
   --state-danger: #d14904;
   --state-regular: #1976dc;
+  --state-neutral: #500375;
   --bg-transition: background 0.1s linear;
   --border-radius: 5px;
   --shimmer-start: var(--bg-primary);
@@ -47,6 +48,7 @@ body.theme-dark {
   --state-success: #74d99f;
   --state-danger: #f67002;
   --state-regular: #4ca1ef;
+  --state-neutral: #c57cd7;
   --shadow: 2px 4px 10px #17202c;
   --shimmer-start: var(--bg-primary);
   --shimmer-middle: var(--bg-secondary);

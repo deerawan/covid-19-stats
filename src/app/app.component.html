@@ -22,13 +22,16 @@
 
 <ng-container *ngIf="stats$ | async as stats; else shimmer">
   <app-stat-title [statTitle]="statTitle"></app-stat-title>
-  <app-stat-item
-    *ngFor="let statItem of stats"
-    [title]="statItem.title"
-    [total]="statItem.total | number"
-    [color]="statItem.color"
-    class="stat-item"
-  ></app-stat-item>
+  <div class="stats">
+    <app-stat-item
+      *ngFor="let statItem of stats"
+      [title]="statItem.title"
+      [total]="statItem.total | number"
+      [color]="statItem.color"
+      class="stats__item"
+    >
+    </app-stat-item>
+  </div>
   <p>
     <span class="remark">Last updated:</span>
     {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }},
@@ -39,7 +42,15 @@
 </ng-container>
 
 <ng-template #shimmer>
-  <div class="shimmer stat-shimmer"></div>
-  <div class="shimmer stat-shimmer"></div>
-  <div class="shimmer stat-shimmer"></div>
+  <div class="shimmer title-shimmer"></div>
+  <div class="stats-shimmer">
+    <div class="shimmer stat-shimmer"></div>
+    <div class="shimmer stat-shimmer"></div>
+    <div class="shimmer stat-shimmer"></div>
+    <div class="shimmer stat-shimmer"></div>
+    <div class="shimmer stat-shimmer"></div>
+    <div class="shimmer stat-shimmer"></div>
+    <div class="shimmer stat-shimmer"></div>
+    <div class="shimmer stat-shimmer"></div>
+  </div>
 </ng-template>

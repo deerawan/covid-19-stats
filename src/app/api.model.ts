@@ -5,6 +5,10 @@ export interface GlobalStat {
   todayDeaths: number;
   recovered: number;
   active: number;
+  tests: number;
+  critical: number;
+  casesPerOneMillion: number;
+  deathsPerOneMillion: number;
   updated: number;
 }
 
@@ -18,7 +22,4 @@ export interface CountryStat extends GlobalStat {
     long: number;
     flag: string;
   };
-  critical: number;
-  casesPerOneMillion: number;
-  deathsPerOneMillion: number;
 }

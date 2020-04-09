@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   border-radius: 5px;
   background: var(--bg-secondary);
   box-shadow: var(--shadow);
@@ -9,14 +10,14 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin: 0;
   color: var(--text-primary);
 }
 
 .number {
-  font-size: 45px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0.2em 0;
 }
@@ -35,4 +36,8 @@
 
 .regular {
   color: var(--state-regular);
+}
+
+.neutral {
+  color: var(--state-neutral);
 }
