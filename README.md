@@ -1,20 +1,24 @@
 # Corona Stats
 
-Chrome extension to display Covid-19 stats based on data from [worldometers](https://www.worldometers.info/)
+Chrome extension to display Covid-19 stats
 
-## Development server
+## Features
+
+- Live data based on [worldometers](https://www.worldometers.info/)
+- Statistics number of confirmed, recovered, and deaths and more
+- Search by country
+- Dark mode
+
+## Development
 
 Run `npm run serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-Run `npm run build -- --watch` to reload extension automatically to chrome.
 
-## Build
+Run `npm run build -- --watch` to reload extension automatically to Chrome.
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Running unit tests
 
-## Running unit tests
+Run `npm t` to execute the unit tests
 
-Run `npm t` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Running end-to-end tests
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end
+Run `npm run e2e` to execute the end-to-end
