@@ -2,8 +2,6 @@
   "name": "corona-stats",
   "version": "0.0.0",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
     "ng": "ng",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
     "start": "ng serve",
@@ -12,6 +10,8 @@
     "lint": "ng lint && npm run lint:style",
     "lint:style": "stylelint \"src/**/*.scss\"",
     "e2e": "ng e2e",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "test:watch": "jest --watch"
   },
   "private": true,
