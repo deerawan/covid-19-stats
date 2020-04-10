@@ -1,6 +1,6 @@
 # Corona Stats
 
-![Corona logo](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/images/corona-logo-128.png?token=AAJPWEIBGXKRCFSUY4M3UGC6R74PQ 'Corona logo')
+![Corona logo](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/src/assets/corona-logo-128.png 'Corona logo')
 
 Chrome extension to display Covid-19 stats.
 
@@ -8,7 +8,7 @@ Chrome extension to display Covid-19 stats.
 
 ## Screenshots
 
-![Corona light mode](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/images/screenshot.png?token=AAJPWEMHDYDXYSM6CEFIUIK6R75L6 'Light mode')
+![extension screenshot](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/images/screenshot.png)
 
 ## Features
 
