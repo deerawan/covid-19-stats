@@ -4,6 +4,8 @@
 
 Chrome extension to display Covid-19 stats.
 
+⬇️ [Install from Chrome web store](https://chrome.google.com/webstore/detail/pjfcgnbgefoebpppegbmjigihbjmoijj/publish-accepted?authuser=0&hl=en)
+
 ## Screenshots
 
 ![Corona light mode](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/images/screenshot.png?token=AAJPWEMHDYDXYSM6CEFIUIK6R75L6 'Light mode')
@@ -17,9 +19,19 @@ Chrome extension to display Covid-19 stats.
 
 ## Development
 
-Run `npm run serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `npm run build -- --watch` to reload extension automatically to Chrome.
+
+### Enable Chrome extension development
+
+To see this app running as Chrome extension, follow these steps below:
+
+1. Open Chrome
+2. Navigate to `chrome://extensions` in address bar
+3. Enable developer mode toggle switch
+4. Click **Load unpacked button** and select `dist/covid19-stats`
+5. Now you should be able to see the extension in Chrome
 
 ### Running unit tests
 
