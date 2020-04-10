@@ -32,13 +32,16 @@
     >
     </app-stat-item>
   </div>
-  <p>
-    <span class="remark">Last updated:</span>
-    {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }},
-    <span class="remark">Source:</span>
-    worldometers.info
-  </p>
-  <p></p>
+  <section class="footer">
+    <p>
+      <span class="remark">Last updated:</span>
+      {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }}
+    </p>
+    <p>
+      <span class="remark">Data source:</span>
+      worldometers.info
+    </p>
+  </section>
 </ng-container>
 
 <ng-template #shimmer>

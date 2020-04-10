@@ -9,6 +9,10 @@
   font-weight: bold;
 }
 
+.stats {
+  margin-bottom: 16px;
+}
+
 .stats,
 .stats-shimmer {
   display: grid;
@@ -32,15 +36,23 @@
   margin-bottom: 10px;
 }
 
-.remark {
-  font-weight: bold;
-}
-
 .country-select {
   margin-bottom: 20px;
 
   label {
     display: block;
     margin-bottom: 8px;
+  }
+}
+
+.footer {
+  margin-bottom: 16px;
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  .remark {
+    font-weight: bold;
   }
 }

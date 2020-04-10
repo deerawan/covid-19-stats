@@ -6,6 +6,8 @@ import { ModeToggleComponent } from './mode-toggle/mode-toggle.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { StatItemComponent } from './stat-item/stat-item.component';
 import { of } from 'rxjs';
+import { StatTitleComponent } from './stat-title/stat-title.component';
+import { global } from '@angular/compiler/src/util';
 
 describe('AppComponent', () => {
   let coronaServiceMock;
@@ -49,9 +51,16 @@ describe('AppComponent', () => {
       )
     };
 
+    global.chrome = { storage: { sync: { get: () => '' } } };
+
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, NgSelectModule],
-      declarations: [AppComponent, ModeToggleComponent, StatItemComponent],
+      declarations: [
+        AppComponent,
+        ModeToggleComponent,
+        StatItemComponent,
+        StatTitleComponent
+      ],
       providers: [
         {
           provide: CoronaService,
@@ -70,8 +79,8 @@ describe('AppComponent', () => {
   it(`should have title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const element = fixture.nativeElement;
-    expect(element.querySelector('.title').textContent).toEqual(
-      'Covid-19 Stats'
+    expect(element.querySelector('.header__title').textContent).toEqual(
+      'Corona Stats'
     );
   });
 

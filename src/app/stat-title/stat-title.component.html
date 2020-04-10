@@ -1,4 +1,4 @@
-<h2 class="stat-title">
+<h2 *ngIf="statTitle" class="stat-title">
   <img
     *ngIf="statTitle.imgUrl"
     [src]="statTitle.imgUrl"

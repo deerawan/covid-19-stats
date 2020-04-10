@@ -55,5 +55,9 @@ body.theme-dark {
   --shimmer-end: var(--bg-secondary);
 }
 
+p {
+  margin-top: 0;
+}
+
 @import './select';
 @import './shimmer';

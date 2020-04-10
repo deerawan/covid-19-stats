@@ -109,14 +109,14 @@ export class AppComponent implements OnInit, AfterViewInit {
         color: 'danger'
       },
       {
-        title: 'Critical',
-        total: response.critical,
-        color: 'warning'
-      },
-      {
         title: 'Total recovered',
         total: response.recovered,
         color: 'success'
+      },
+      {
+        title: 'Critical',
+        total: response.critical,
+        color: 'warning'
       },
       {
         title: 'Cases / Million ',
