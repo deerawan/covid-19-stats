@@ -6,9 +6,7 @@ Chrome extension to display Covid-19 stats.
 
 ## Screenshots
 
-![Corona light mode](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/images/corona-light-mode.png?token=AAJPWELUWSYAUIXGT6HRK2C6R743G 'Light mode')
-
-![Corona dark mode](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/images/corona-dark-mode.png?token=AAJPWELYHCK4HKJHYGXLXDS6R744M 'Dark mode')
+![Corona light mode](https://raw.githubusercontent.com/deerawan/covid-19-stats/master/images/screenshot.png?token=AAJPWEMHDYDXYSM6CEFIUIK6R75L6 'Light mode')
 
 ## Features
 
