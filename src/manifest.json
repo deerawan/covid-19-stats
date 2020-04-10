@@ -1,10 +1,15 @@
 {
   "name": "Covid-19 Stats",
   "version": "1.0",
-  "description": "Get information on Covid-19",
+  "description": "Get the latest update on Covid-19 statistics worldwide and per country. Data include total cases, total deaths, recovered and many more.",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "index.html"
   },
-  "permissions": ["activeTab", "webNavigation", "storage"]
+  "icons": {
+    "16": "assets/corona-logo-16.png",
+    "48": "assets/corona-logo-48.png",
+    "128": "assets/corona-logo-128.png"
+  },
+  "permissions": ["storage"]
 }
