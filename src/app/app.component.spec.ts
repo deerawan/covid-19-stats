@@ -79,8 +79,8 @@ describe('AppComponent', () => {
   it(`should have title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const element = fixture.nativeElement;
-    expect(element.querySelector('.header__title').textContent).toEqual(
-      'Corona Stats'
+    expect(element.querySelector('.header__title').textContent).toContain(
+      'Covid-19 Stats'
     );
   });
 
@@ -88,6 +88,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement;
-    expect(element.querySelector('#country')).toBeTruthy();
+    expect(element.querySelector('[data-test-id="country"]')).toBeTruthy();
   });
 });
