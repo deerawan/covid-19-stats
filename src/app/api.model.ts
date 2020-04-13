@@ -1,4 +1,4 @@
-export interface GlobalStat {
+export interface Stat {
   cases: number;
   todayCases: number;
   deaths: number;
@@ -11,8 +11,9 @@ export interface GlobalStat {
   deathsPerOneMillion: number;
   updated: number;
 }
+export type GlobalStat = Stat;
 
-export interface CountryStat extends GlobalStat {
+export interface CountryStat extends Stat {
   country: string;
   countryInfo: {
     _id: number;

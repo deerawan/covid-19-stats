@@ -12,7 +12,7 @@
 <section class="country-select">
   <label for="country">Select country</label>
   <ng-select
-    [items]="countryNames$ | async"
+    [items]="countryStats$ | async"
     data-test-id="country"
     bindLabel="country"
     autofocus
@@ -22,40 +22,4 @@
   </ng-select>
 </section>
 
-<ng-container *ngIf="stats$ | async as stats; else shimmer">
-  <app-stat-title [statTitle]="statTitle"></app-stat-title>
-  <div class="stats">
-    <app-stat-item
-      *ngFor="let statItem of stats"
-      [title]="statItem.title"
-      [total]="statItem.total | number"
-      [color]="statItem.color"
-      class="stats__item"
-    >
-    </app-stat-item>
-  </div>
-  <section class="footer">
-    <p>
-      <span class="remark">Last updated:</span>
-      {{ lastUpdated$ | async | date: 'd MMM y, H:mm' }}
-    </p>
-    <p>
-      <span class="remark">Data source:</span>
-      worldometers.info
-    </p>
-  </section>
-</ng-container>
-
-<ng-template #shimmer>
-  <div class="shimmer title-shimmer"></div>
-  <div class="stats-shimmer">
-    <div class="shimmer stat-shimmer"></div>
-    <div class="shimmer stat-shimmer"></div>
-    <div class="shimmer stat-shimmer"></div>
-    <div class="shimmer stat-shimmer"></div>
-    <div class="shimmer stat-shimmer"></div>
-    <div class="shimmer stat-shimmer"></div>
-    <div class="shimmer stat-shimmer"></div>
-    <div class="shimmer stat-shimmer"></div>
-  </div>
-</ng-template>
+<app-stat-list [stat]="stat$ | async" class="stat-list"></app-stat-list>

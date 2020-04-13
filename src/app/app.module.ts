@@ -9,13 +9,15 @@ import { ModeToggleComponent } from './mode-toggle/mode-toggle.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { StatTitleComponent } from './stat-title/stat-title.component';
+import { StatListComponent } from './stat-list/stat-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StatItemComponent,
     ModeToggleComponent,
-    StatTitleComponent
+    StatTitleComponent,
+    StatListComponent
   ],
   imports: [
     BrowserModule,

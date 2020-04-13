@@ -1,4 +1,4 @@
-export interface Stat {
+export interface StatItem {
   title: string;
   total: number;
   color: StatType;

@@ -1,13 +1,8 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  AfterViewInit
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CoronaService } from './corona.service';
-import { Observable, Subject, of } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { Stat, Theme, StatTitle } from './corona.model';
+import { Observable, Subject, of, combineLatest, BehaviorSubject } from 'rxjs';
+import { shareReplay, switchMap, take } from 'rxjs/operators';
+import { Theme } from './corona.model';
 import { GlobalStat, CountryStat } from './api.model';
 
 @Component({
@@ -16,44 +11,58 @@ import { GlobalStat, CountryStat } from './api.model';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  lastUpdated$: Observable<number>;
-  countryNames$: Observable<CountryStat[]>;
-  stats$: Observable<Stat[]>;
+export class AppComponent implements OnInit {
   mode: Theme;
-  statTitle: StatTitle;
-
-  private globalApiResponse$: Observable<GlobalStat>;
+  stat$: Observable<GlobalStat | CountryStat>;
+  globalStat$: Observable<GlobalStat>;
+  countryStats$: Observable<CountryStat[]>;
 
   private storageTheme = new Subject<Theme>();
   storageTheme$ = this.storageTheme.asObservable();
+
+  private storageCountry = new BehaviorSubject<string>(null);
 
   constructor(private coronaService: CoronaService) {}
 
   ngOnInit(): void {
     if (chrome && chrome.storage) {
-      chrome.storage.sync.get('theme', ({ theme }) => {
-        this.storageTheme.next(theme);
-        if (theme === 'dark') {
-          this.setDarkMode();
+      chrome.storage.sync.get(['theme', 'country'], ({ theme, country }) => {
+        if (country) {
+          this.storageCountry.next(country);
+        }
+
+        if (theme) {
+          this.storageTheme.next(theme);
+          if (theme === 'dark') {
+            this.setDarkMode();
+          }
         }
       });
     }
 
-    this.globalApiResponse$ = this.coronaService
+    this.globalStat$ = this.coronaService
       .getGlobalStat()
-      .pipe(shareReplay(1));
+      .pipe(take(1), shareReplay(1));
+    this.countryStats$ = this.coronaService
+      .getCountriesStat()
+      .pipe(take(1), shareReplay(1));
 
-    this.statTitle = this.getGlobalStatTitle();
-    this.stats$ = this.getGlobalStat();
-    this.countryNames$ = this.coronaService.getCountriesStat();
+    this.stat$ = combineLatest([this.countryStats$, this.storageCountry]).pipe(
+      take(1),
+      switchMap(values => {
+        const [countryStats, country] = values;
 
-    this.lastUpdated$ = this.globalApiResponse$.pipe(
-      map(response => response.updated)
+        if (country) {
+          const statFound = countryStats.find(
+            countryStat => countryStat.country === country
+          );
+          return of(statFound);
+        }
+
+        return this.globalStat$;
+      })
     );
   }
-
-  ngAfterViewInit() {}
 
   setLightMode() {
     if (chrome && chrome.storage) {
@@ -70,64 +79,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onCountryChange(event: CountryStat) {
-    this.stats$ = event ? of(this.buildStat(event)) : this.getGlobalStat();
-    this.statTitle = event
-      ? { text: event.country, imgUrl: event.countryInfo.flag }
-      : this.getGlobalStatTitle();
-  }
-
-  private getGlobalStat(): Observable<Stat[]> {
-    return this.globalApiResponse$.pipe(
-      map((response: GlobalStat) => this.buildStat(response))
-    );
-  }
-
-  private getGlobalStatTitle(): StatTitle {
-    return { text: '🌏 Global' };
-  }
-
-  private buildStat(response: GlobalStat): Stat[] {
-    return [
-      {
-        title: 'Total cases',
-        total: response.cases,
-        color: 'regular'
-      },
-      {
-        title: 'New cases',
-        total: response.todayCases,
-        color: 'regular'
-      },
-      {
-        title: 'Total deaths',
-        total: response.deaths,
-        color: 'danger'
-      },
-      {
-        title: 'New deaths',
-        total: response.todayDeaths,
-        color: 'danger'
-      },
-      {
-        title: 'Total recovered',
-        total: response.recovered,
-        color: 'success'
-      },
-      {
-        title: 'Critical',
-        total: response.critical,
-        color: 'warning'
-      },
-      {
-        title: 'Cases / Million ',
-        total: response.casesPerOneMillion,
-        color: 'neutral'
-      },
-      {
-        title: 'Deaths / Million',
-        total: response.deathsPerOneMillion,
-        color: 'neutral'
-      }
-    ];
+    this.stat$ = event ? of(event) : this.globalStat$;
+    chrome.storage.sync.set({ country: event.country });
   }
 }

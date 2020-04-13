@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats {
+  margin-bottom: 16px;
+}
+
+.stats,
+.stats-shimmer {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.stat-shimmer {
+  height: 97px;
+}
+
+.stats__item,
+.stat-shimmer {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.title-shimmer {
+  height: 32px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  p {
+    margin-bottom: 4px;
+  }
+
+  .remark {
+    font-weight: bold;
+  }
+}

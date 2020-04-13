@@ -8,6 +8,7 @@ import { StatItemComponent } from './stat-item/stat-item.component';
 import { of } from 'rxjs';
 import { StatTitleComponent } from './stat-title/stat-title.component';
 import { global } from '@angular/compiler/src/util';
+import { StatListComponent } from './stat-list/stat-list.component';
 
 describe('AppComponent', () => {
   let coronaServiceMock;
@@ -59,7 +60,8 @@ describe('AppComponent', () => {
         AppComponent,
         ModeToggleComponent,
         StatItemComponent,
-        StatTitleComponent
+        StatTitleComponent,
+        StatListComponent
       ],
       providers: [
         {
