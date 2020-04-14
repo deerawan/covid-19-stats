@@ -12,10 +12,10 @@ Chrome extension to display Covid-19 stats.
 
 ## Features
 
-- Live data based on [worldometers](https://www.worldometers.info/)
-- Statistics number of confirmed, recovered, and deaths and more
-- Search by country
-- Dark mode
+- 🔥 Live data based on [worldometers](https://www.worldometers.info/)
+- 📊 Statistics number of confirmed, recovered, and deaths and more
+- 🇺🇸 Search by country
+- 🌒 Dark mode
 
 ## Development
 
