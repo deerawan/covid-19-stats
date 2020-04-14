@@ -7,7 +7,7 @@ import { StatItemComponent } from './stat-item/stat-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModeToggleComponent } from './mode-toggle/mode-toggle.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatTitleComponent } from './stat-title/stat-title.component';
 import { StatListComponent } from './stat-list/stat-list.component';
 
@@ -24,7 +24,8 @@ import { StatListComponent } from './stat-list/stat-list.component';
     AppRoutingModule,
     HttpClientModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

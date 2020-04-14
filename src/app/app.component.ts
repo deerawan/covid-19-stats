@@ -4,6 +4,7 @@ import { Observable, Subject, of, combineLatest, BehaviorSubject } from 'rxjs';
 import { shareReplay, switchMap, take } from 'rxjs/operators';
 import { Theme } from './corona.model';
 import { GlobalStat, CountryStat } from './api.model';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { GlobalStat, CountryStat } from './api.model';
 })
 export class AppComponent implements OnInit {
   mode: Theme;
+  countryForm: FormGroup;
   stat$: Observable<GlobalStat | CountryStat>;
   globalStat$: Observable<GlobalStat>;
   countryStats$: Observable<CountryStat[]>;
@@ -22,9 +24,16 @@ export class AppComponent implements OnInit {
 
   private storageCountry = new BehaviorSubject<string>(null);
 
-  constructor(private coronaService: CoronaService) {}
+  constructor(
+    private coronaService: CoronaService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.countryForm = this.formBuilder.group({
+      country: ''
+    });
+
     if (chrome && chrome.storage) {
       chrome.storage.sync.get(['theme', 'country'], ({ theme, country }) => {
         if (country) {
@@ -56,6 +65,9 @@ export class AppComponent implements OnInit {
           const statFound = countryStats.find(
             countryStat => countryStat.country === country
           );
+
+          this.countryForm.get('country').patchValue(country);
+
           return of(statFound);
         }
 

@@ -19,6 +19,14 @@ Chrome extension to display Covid-19 stats.
 
 ## Development
 
+### Tech Stack
+
+- Angular 9
+- Jest for unit testing
+- Cypress for E2E testing
+
+### Local development
+
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `npm run build -- --watch` to reload extension automatically to Chrome.
@@ -39,4 +47,6 @@ Run `npm t` to execute the unit tests
 
 ### Running end-to-end tests
 
-Run `npm run e2e` to execute the end-to-end
+- Run `npm run cy:open` to open cypress UI
+- Run `npm run cy:run` to run cypress in headless mode
+- Run `npm run e2e` to execute the end-to-end

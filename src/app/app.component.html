@@ -10,16 +10,21 @@
 </section>
 
 <section class="country-select">
-  <label for="country">Select country</label>
-  <ng-select
-    [items]="countryStats$ | async"
-    data-test-id="country"
-    bindLabel="country"
-    autofocus
-    bindValue="country"
-    (change)="onCountryChange($event)"
-  >
-  </ng-select>
+  <form [formGroup]="countryForm">
+    <label for="country">Select country</label>
+    <ng-select
+      labelForId="country"
+      bindLabel="country"
+      bindValue="country"
+      formControlName="country"
+      data-test-id="country"
+      autofocus
+      [items]="countryStats$ | async"
+      [virtualScroll]="true"
+      (change)="onCountryChange($event)"
+    >
+    </ng-select>
+  </form>
 </section>
 
 <app-stat-list [stat]="stat$ | async" class="stat-list"></app-stat-list>
