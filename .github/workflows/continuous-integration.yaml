@@ -1,7 +1,7 @@
 name: Covid-19 Test
 on: [push]
 jobs:
-  continuous-integration:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
