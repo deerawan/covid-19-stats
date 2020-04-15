@@ -1,11 +1,25 @@
 name: Covid-19 Test
 on: [push]
 jobs:
-  cypress-run:
+  continuous-integration:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run npm install
+        run: |
+          npm install
 
       - name: Unit test
         uses: stefanoeb/jest-action@1.0.2
