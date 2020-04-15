@@ -1,4 +1,4 @@
-name: End-to-end tests
+name: Covid-19 Test
 on: [push]
 jobs:
   cypress-run:
@@ -6,6 +6,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+
+      - name: Unit test
+        uses: stefanoeb/jest-action@1.0.2
+        with:
+          test: npm test
 
       - name: Cypress run
         uses: cypress-io/github-action@v1
