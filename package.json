@@ -11,7 +11,7 @@
     "lint:style": "stylelint \"src/**/*.scss\"",
     "e2e": "ng e2e",
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "cypress run --browser chrome",
     "test:watch": "jest --watch"
   },
   "private": true,
