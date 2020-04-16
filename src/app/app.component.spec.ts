@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 import { StatTitleComponent } from './stat-title/stat-title.component';
 import { global } from '@angular/compiler/src/util';
 import { StatListComponent } from './stat-list/stat-list.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   let coronaServiceMock;
@@ -55,7 +56,12 @@ describe('AppComponent', () => {
     global.chrome = { storage: { sync: { get: () => '' } } };
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, NgSelectModule],
+      imports: [
+        RouterTestingModule,
+        NgSelectModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
       declarations: [
         AppComponent,
         ModeToggleComponent,
