@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GlobalStat, CountryStat } from './api.model';
 
-const BASE_URL = 'https://corona.lmao.ninja';
+const BASE_URL = 'https://corona.lmao.ninja/v2';
 @Injectable({
   providedIn: 'root'
 })
