@@ -5,6 +5,8 @@ describe('CoronaService', () => {
   let service: CoronaService;
   let httpClientMock;
 
+  const expectedBaseUrl = 'https://corona.lmao.ninja/v2';
+
   beforeEach(() => {
     httpClientMock = {
       get: jest.fn()
@@ -32,7 +34,7 @@ describe('CoronaService', () => {
       service.getGlobalStat().subscribe(response => {
         expect(response).toEqual(expectedResponse);
         expect(httpClientMock.get).toHaveBeenCalledWith(
-          'https://corona.lmao.ninja/all'
+          `${expectedBaseUrl}/all`
         );
         done();
       });
@@ -71,7 +73,7 @@ describe('CoronaService', () => {
       service.getCountriesStat().subscribe(response => {
         expect(response).toEqual(expectedResponse);
         expect(httpClientMock.get).toHaveBeenCalledWith(
-          'https://corona.lmao.ninja/countries'
+          `${expectedBaseUrl}/countries`
         );
         done();
       });
