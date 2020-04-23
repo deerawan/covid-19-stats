@@ -92,6 +92,15 @@ export class AppComponent implements OnInit {
 
   onCountryChange(event: CountryStat) {
     this.stat$ = event ? of(event) : this.globalStat$;
-    chrome.storage.sync.set({ country: event.country });
+
+    if (!(chrome && chrome.storage)) {
+      return;
+    }
+
+    if (event && event.country) {
+      chrome.storage.sync.set({ country: event.country });
+    } else {
+      chrome.storage.sync.remove('country');
+    }
   }
 }
